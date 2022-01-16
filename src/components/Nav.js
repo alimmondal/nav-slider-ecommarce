@@ -40,7 +40,7 @@ import {
 } from "react-icons/io";
 
 // import { logout } from "../actions/userActions";
-import { keyword } from "color-convert";
+// import { keyword } from "color-convert";
 import Searchnav from "./Searchnav";
 
 const Nav = ({ history }) => {
@@ -69,10 +69,10 @@ const Nav = ({ history }) => {
     searchRef.current.style.animation = "moving 0.3s ease both 0.3s";
   };
 
-  const onDelSeacrh = () => {
-    setShowSearchIc(!showSearchIc); //true
-    searchRef.current.classList.toggle("searchActive");
-  };
+  // const onDelSeacrh = () => {
+  //   setShowSearchIc(!showSearchIc); //true
+  //   searchRef.current.classList.toggle("searchActive");
+  // };
 
   const onBurgActive = () => {
     //Toggle Nav
@@ -124,22 +124,20 @@ const Nav = ({ history }) => {
       <div className="logo">
         <p>EAST CLOTHING</p>
       </div>
-      <Router>
         <ul className="navLinks" ref={navLinks}>
-          <NavLink to="/" activeclassname="activlink">
+          <NavLink to="/" exact activeClassName="activlink">
             <li>Home</li>
           </NavLink>
-          <NavLink to="/shop" activeclassname="activlink">
+          <NavLink to="/shop" activeClassName="activlink">
             <li>Shop</li>
           </NavLink>
-          <NavLink to="/contactus" activeclassname="activlink">
+          <NavLink to="/contactus" activeClassName="activlink">
             <li>Contact us</li>
           </NavLink>
-          <NavLink to="/about" activeclassname="activlink">
+          <NavLink to="/about" activeClassName="activlink">
             <li>About</li>
           </NavLink>
         </ul>
-      </Router>
       <div className="burger" ref={Buric} onClick={onBurgActive}>
         <div className="line1"></div>
         <div className="line2"></div>
@@ -170,9 +168,8 @@ const Nav = ({ history }) => {
               />
             </div> */}
         {/* ) : ( */}
-        {/* <Link to="/login"> */}{" "}
-        <div
-          className="signin"
+        <Link to="/login">{" "}
+        <div className="signin"
           // onMouseOver={() => setSignin(!signin)}
           // onMouseOut={() => setSignin(!signin)}
         >
@@ -184,7 +181,7 @@ const Nav = ({ history }) => {
           {/* <IoIosArrowDropright size="25" /> */}
           {/* )} */}
         </div>
-        {/* </Link> */}
+        </Link>
         {/* )} */}
         {/* {userInfo && userInfo.isAdmin && (
             <Menu>

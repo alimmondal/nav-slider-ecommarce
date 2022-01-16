@@ -2,7 +2,7 @@ import React from 'react';
 import Cardscg from '../components/Cardscg';
 import { Helmet } from "react-helmet";
 import ProductsC from '../components/ProductsC';
-// import Slider from '../components/Slider';
+import Slider from '../components/Slider';
 
 const Home = () => {
     return (
@@ -11,7 +11,7 @@ const Home = () => {
             <title>CLOTHING</title>
         </Helmet>
              <div>
-                {/* <Slider/> */}
+                <Slider/>
                  <div className="cards">
                          <Cardscg title='Women'/>
                          <Cardscg title='Men'/>
