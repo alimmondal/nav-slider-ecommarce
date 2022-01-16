@@ -1,13 +1,14 @@
 import React from 'react';
 import Cardscg from '../components/Cardscg';
 import { Helmet } from "react-helmet";
+import ProductsC from '../components/ProductsC';
 // import Slider from '../components/Slider';
 
 const Home = () => {
     return (
         <>
         <Helmet>
-            <title>EAST CLOTHING</title>
+            <title>CLOTHING</title>
         </Helmet>
              <div>
                 {/* <Slider/> */}
@@ -16,8 +17,8 @@ const Home = () => {
                          <Cardscg title='Men'/>
                          <Cardscg title='Accessoires'/>                
                  </div>
-                {/* <CgDiv/>
-                <ProductsC/> */}
+                 {/* <CgDiv/> */}
+                <ProductsC/> 
         </div>
         </>
     );
