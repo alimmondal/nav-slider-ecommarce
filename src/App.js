@@ -23,6 +23,8 @@ import ScrollIntoView from "./components/Scrollintoview";
 import Footer from "./pages/Footer/Footer";
 import LoginScreen from "./pages/Login/LoginScreen";
 import RegisterScreen from "./components/RegisterScreen";
+import Shop from "./pages/Shop";
+import Productpage from "./pages/Product/Productpage";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -48,10 +50,12 @@ const App = () => {
                 <Switch>
                   <Route path="/" exact component={Home} />
                   <Route path="/about" component={About} />
-                  {/* <Route path="/shop" component={Shop}/> */}
+                  <Route path="/shop" component={Shop} />
                   <Route path="/contactus" component={Contactus} />
                   <Route path="/login" component={LoginScreen} />
                   <Route path="/register" component={RegisterScreen} />
+                  {/* <Route path="/product/:id" component={Productpage} /> */}
+                  {/* <Route path="/search/:keyword" component={Shop} /> */}
                   {/* <Route path="/product/:id" component={Productpage}/>
                  <Route path="/cart/:id?" component={Cartpage}/>
                 
@@ -63,7 +67,7 @@ const App = () => {
                  <Route path="/admin/userlist" component={Users}/>
                  <Route path="/admin/productlist" component={Products}/>
                  <Route path="/admin/orderlist" component={Orders}/>
-                 <Route path="/search/:keyword" component={Shop}/>
+                 
 
                  <Route path="/admin/user/:id/edit" component={Edituser}/>
                  <Route path="/admin/product/:id/edit" component={Editproduct}/>

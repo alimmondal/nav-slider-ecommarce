@@ -5,10 +5,10 @@ import {
   IoIosCart,
 } from "react-icons/io";
 import { Image } from "@chakra-ui/react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Rating from "./Rating";
 // import { addToCart } from "../actions/cartActions";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 const CardProduct = ({ product }) => {
   const [showbtn, setShowbtn] = useState(false);
   const [Incart, setIncart] = useState(false);
@@ -48,9 +48,9 @@ const CardProduct = ({ product }) => {
           />
         </div>
         <div className="bottomcard">
-          {/* <Link to={`/product/${product._id}`} exact> */}
+          <Link to={`/product/${product._id}`} exact>
             <span>{product.name}</span>
-          {/* </Link> */}
+          </Link>
           {Incart ? (
             <IoIosCart className="iconFav" size="26" />
           ) : (
@@ -71,14 +71,14 @@ const CardProduct = ({ product }) => {
           </div>
         </div>
 
-        {/* <Link to={`/product/${product._id}`} exact> */}
+        <Link to={`/product/${product._id}`} exact>
           <button
             className={showbtn ? "QuickView QuickViewActive" : "QuickView"}
           >
             {" "}
             View Details
           </button>
-        {/* </Link> */}
+        </Link>
       </div>
     </>
   );

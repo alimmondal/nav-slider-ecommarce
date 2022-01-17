@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import CardProduct from "./CardProduct";
 import jacket from "../images/jacket.jpg"
 import lotion from "../images/lotion.jpg"
@@ -17,15 +17,15 @@ import nail from "../images/nail.webp";
 //   Listproductbyprice,
 // } from "../actions/productActions";
 // import { BsFilter, AiOutlineSearch, IoMdClose } from "react-icons/io";
-// import Search from "./Search";
-// import {
-//   NumberInput,
-//   NumberInputField,
-//   FormLabel,
-//   Button,
-//   Stack,
-//   FormControl,
-// } from "@chakra-ui/react";
+import Search from "./Search";
+import {
+  NumberInput,
+  NumberInputField,
+  FormLabel,
+  Button,
+  Stack,
+  FormControl,
+} from "@chakra-ui/react";
 // import HashLoader from "react-spinners/HashLoader";
 import {
   BrowserRouter as Router,
@@ -35,7 +35,7 @@ import {
   NavLink,
 } from "react-router-dom";
 const ProductsC = ({ match, history }) => {
-  const products = [
+  const Products = [
     {
       _id: 1,
       name: "Man's Jackets",
@@ -97,63 +97,67 @@ const ProductsC = ({ match, history }) => {
       images: nail,
     },
   ];
-//   const [From, setFrom] = useState(0);
-//   const [To, setTo] = useState(0);
+  const [From, setFrom] = useState(0);
+  const [To, setTo] = useState(0);
 
-//   let Cg = window.location.search ? window.location.search.split("=")[1] : null;
-//   const keyword = window.location.pathname.split("/")[2];
-//   const dispatch = useDispatch();
-//   const productList = useSelector((state) => state.productList);
-//   const productbycg = useSelector((state) => {
-//     return state.ListproductbyCg;
-//   });
-//   const productbyfilter = useSelector((state) => {
-//     return state.Listproductbyfilter;
-//   });
-//   const productbyprice = useSelector((state) => {
-//     return state.Listproductbyprice;
-//   });
+  let Cg = window.location.search ? window.location.search.split("=")[1] : null;
+  const keyword = window.location.pathname.split("/")[2];
 
-//   const { loading, error, products } = productbycg
-//     ? productbycg
-//     : productList
-//     ? productList
-//     : productbyprice;
-//   useEffect(() => {
-//     if (Cg) {
-//       console.log(window.location.search.split("=")[0]);
-//       if (window.location.search.split("=")[0] === "?cg") {
-//         dispatch(ListproductbyCg(Cg));
-//         console.log(products);
-//       } else {
-//         dispatch(Listproductbyfiter(Cg));
-//       }
-//     } else {
-//       dispatch(listProducts(keyword));
-//     }
-//   }, [dispatch, Cg, keyword]);
-//   const [showfilter, setshowfilter] = useState(false);
-//   const [showsearch, setshowsearch] = useState(false);
-//   const filterfunc = () => {
-//     setshowfilter(!showfilter);
-//     if (showsearch) {
-//       setshowsearch(false);
-//     }
-//   };
-//   const searchfunc = () => {
-//     setshowsearch(!showsearch);
-//     if (showfilter) {
-//       setshowfilter(false);
-//     }
-//   };
-//   const pricehandler = () => {
-//     dispatch(Listproductbyprice(From, To));
-//   };
+  // const dispatch = useDispatch();
+  // const productList = useSelector((state) => state.productList);
+  // const productbycg = useSelector((state) => {
+  //   return state.ListproductbyCg;
+  // });
+  // const productbyfilter = useSelector((state) => {
+  //   return state.Listproductbyfilter;
+  // });
+  // const productbyprice = useSelector((state) => {
+  //   return state.Listproductbyprice;
+  // });
+
+  // const { loading, error, products } = productbycg
+  //   ? productbycg
+  //   : productList
+  //   ? productList
+  //   : productbyprice;
+
+  useEffect(() => {
+    if (Cg) {
+      console.log(window.location.search.split("=")[0]);
+      if (window.location.search.split("=")[0] === "?cg") {
+        // dispatch(ListproductbyCg(Cg));
+        // console.log(products);
+      } else {
+        // dispatch(Listproductbyfiter(Cg));
+      }
+    } else {
+      // dispatch(listProducts(keyword));
+    }
+  }, [ Cg, keyword]);
+  // }, [ dispatch, Cg, keyword]);
+
+  const [showfilter, setshowfilter] = useState(false);
+  const [showsearch, setshowsearch] = useState(false);
+  const filterfunc = () => {
+    setshowfilter(!showfilter);
+    if (showsearch) {
+      setshowsearch(false);
+    }
+  };
+  const searchfunc = () => {
+    setshowsearch(!showsearch);
+    if (showfilter) {
+      setshowfilter(false);
+    }
+  };
+  const pricehandler = () => {
+    // dispatch(Listproductbyprice(From, To));
+  };
 
   return (
     <>
       <div className="Cgfilter">
-        {/* <h1>
+        <h1>
           {Cg ? Cg : keyword ? "*" + keyword + "* Search" : "All"} Products
         </h1>
         <div className="filtersbtn ">
@@ -162,7 +166,11 @@ const ProductsC = ({ match, history }) => {
             onClick={filterfunc}
           >
             {" "}
-            {showfilter ? <IoMdClose size="20" /> : <BsFilter size="20" />}
+            {showfilter ? (
+              <i class="far fa-times-circle" size="20"></i>
+            ) : (
+              <i class="fas fa-sort-amount-down" size="20"></i>
+            )}
             Filter
           </button>
 
@@ -171,40 +179,38 @@ const ProductsC = ({ match, history }) => {
             onClick={searchfunc}
           >
             {showsearch ? (
-              <IoMdClose size="20" />
+              <i class="far fa-times-circle" size="20"></i>
             ) : (
-              <AiOutlineSearch size="20" />
+              <i class="fas fa-search" size="20"></i>
             )}
             Search
           </button>
-        </div> */}
+        </div>
 
         <div className="filters">
-          <Router>
-            <ul>
-              <Link className="lined" to="?cg">
-                All
-              </Link>
-              <Link className="lined" to="?cg=Men">
-                Men
-              </Link>
-              <Link className="lined" to="?cg=Women">
-                Women
-              </Link>
-              <Link className="lined" to="?cg=Watches">
-                Watches
-              </Link>
-              <Link className="lined" to="?cg=Shoes">
-                Shoes
-              </Link>
-              <Link to="?cg=Bag" className="lined">
-                Bag
-              </Link>
-            </ul>
-          </Router>
+          <ul>
+            <Link className="lined" to="?cg">
+              All
+            </Link>
+            <Link className="lined" to="?cg=Men">
+              Men
+            </Link>
+            <Link className="lined" to="?cg=Women">
+              Women
+            </Link>
+            <Link className="lined" to="?cg=Watches">
+              Watches
+            </Link>
+            <Link className="lined" to="?cg=Shoes">
+              Shoes
+            </Link>
+            <Link to="?cg=Bag" className="lined">
+              Bag
+            </Link>
+          </ul>
         </div>
       </div>
-      {/* {showsearch && (
+      {showsearch && (
         <Route render={({ history }) => <Search history={history} />} />
       )}
       <div className={`filterarea ${showfilter ? "filter" : "filteroff"}`}>
@@ -281,7 +287,7 @@ const ProductsC = ({ match, history }) => {
           </FormControl>
         </div>
       </div>
-      {loading ? (
+      {/* {loading ? (
         <div className="loading">
           <HashLoader color={"#fff"} loading={loading} size={40} />
         </div>
@@ -290,12 +296,12 @@ const ProductsC = ({ match, history }) => {
       ) : products.length === 0 ? (
         <h1 className="nothingfound">Nothing Found !!!</h1>
       ) : ( */}
-      <div className="cardsProduct">
-        {products.map((product) => (
-          <CardProduct key={product._id} product={product} />
-        ))}
-      </div>
-      {/* )} */}
+        <div className="cardsProduct">
+          {Products.map((product) => (
+            <CardProduct key={product._id} product={product} />
+          ))}
+        </div>
+      // )}
     </>
   );
 };

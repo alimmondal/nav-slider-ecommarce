@@ -145,8 +145,8 @@ const Nav = ({ history }) => {
       </div>
       <div className="rightComp" ref={rightItems}>
         <div ref={searchRef} className="search">
-          <Searchnav history={history} />
-          {/* <Route render={({ history }) => <Searchnav history={history} />} /> */}
+          {/* <Searchnav history={history} /> */}
+          <Route render={({ history }) => <Searchnav history={history} />} />
         </div>
         {!showSearchIc && (
           <MdSearch className="iconSearch" size="26" onClick={onSeacrhFun} />
